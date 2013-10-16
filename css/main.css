@@ -591,3 +591,7 @@ h4 {
 .span-3.last.pull-half a:hover {
     color: #4ac8fc;
 }
+
+img {
+    max-width: 100%;
+}

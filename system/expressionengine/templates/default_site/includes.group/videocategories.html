@@ -1,0 +1,8 @@
+<div id="categories" class="span-15 last" style="margin-top:8px;">
+	<ul class="category_list">
+		<li {if segment_2 ==''}class="active-category"{/if}><a href="{path='video'}">All Categories</a></li>
+		{exp:channel:categories channel="video" style="linear"}
+		<li {if segment_3 == category_url_title}class="active-category"{/if}><a href="{path='video'}">{category_name}</a></li>
+		{/exp:channel:categories}
+	</ul>
+</div><!-- end #categories -->

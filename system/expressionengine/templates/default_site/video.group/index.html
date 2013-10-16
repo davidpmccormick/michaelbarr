@@ -1,0 +1,51 @@
+{embed="includes/header"}
+
+{embed="includes/navigation"}
+
+{embed="includes/videocategories"}
+
+<?php
+$qstring = '{segment_2}';
+$show_archive = ( preg_match("#(^|\/)P(\d+)#", $qstring) OR $qstring == '' OR $qstring == 'category') ? 'y' : 'n';
+if ($show_archive == 'y') { ?>
+
+<div id="blog" class="span-12 last body-copy gray"  style="display:none; margin-top:25px;">
+	{exp:channel:entries channel="video" limit="2" paginate="bottom"}
+	<div class="span-12 blog-excerpt">
+		<div class="span-8">
+			<a href="{path='video'}/{url_title}"><h4>{title}</h4></a>
+		</div>
+		<div class="span-4 last" style="float:right;color: #999;font-size: 13px; text-shadow: 1px 1px 0 #fff;">
+			<p style="text-align:right;">{entry_date format='%M %d'}</p>
+		</div>
+	</div>
+	{paginate}
+	<div id="blog-prev-next">
+		{if previous_page}
+		<a class="prev" href="{auto_path}">Previous Page</a> &nbsp;
+		{/if}
+		{if {current_page} != '1' AND  "{current_page}" != "{total_pages}"  }&nbsp;|&nbsp;{/if}
+		{if next_page}
+		<a class="next" href="{auto_path}">Next Page</a>
+		{/if}
+	</div>
+	{/paginate}
+	{/exp:channel:entries}
+</div>
+<?php } else { ?>
+<div id="two-last-cols" class="span-15 last body-copy gray blog-entry" style="display:none;">
+	{exp:channel:entries channel="video"}
+		{blog_body}
+	{/exp:channel:entries}
+	<div id="blog-prev-next" class="right">
+		{exp:channel:prev_entry channel="video"}
+	   <a style="margin-right: 20px;" rel="prev" href="{path='video'}">&lt; {title}</a>
+		{/exp:channel:prev_entry}
+		{exp:channel:next_entry channel="video"}
+	   <a rel="next" href="{path='video'}">{title} &gt;</a>
+		{/exp:channel:next_entry}
+	</div>
+</div><!-- end #two-last-cols -->
+<?php } ?>
+
+{embed="includes/footer"}

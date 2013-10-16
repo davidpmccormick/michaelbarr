@@ -1,0 +1,26 @@
+{embed="includes/header"}
+
+{embed="includes/navigation"}
+
+<div id="middle-col" class="span-8">
+    <div class="quote less-line-height">
+        {exp:channel:entries channel="quotes"}
+        <div id="to-cycle">
+            {quote}
+            <div class="attribution">{subquote}</div>
+        </div>
+        {/exp:channel:entries}
+    </div>
+</div><!-- end #middle-col -->
+
+<div id="right-col" class="span-8 last">
+    {exp:channel:entries channel="blog" limit="1"}
+        <div class="homepage-excerpt">
+            <a style="font-style:normal;" href="{path='blog'}"><h4 class="red">Latest from the blog&hellip;</h4></a>
+            <a rel="bookmark" href="{path='blog'}/{url_title}">{blog_excerpt}</a>
+        </div>
+    {/exp:channel:entries}
+
+</div><!-- end #right-col -->
+
+{embed="includes/footer"}

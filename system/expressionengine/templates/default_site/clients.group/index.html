@@ -1,0 +1,36 @@
+{embed="includes/header"}
+
+{embed="includes/navigation"}
+
+{if segment_2 == ''}
+<div class="span 8 prepend-8"><h4 style="margin-left: 15px; padding-top: 8px;">Click for the full endorsement</h4></div>
+<div id="do-masonry" class="span-16 last body-copy gray"  style="display:none;">
+	{exp:channel:entries channel="clients" limit="10" sort="asc"}
+		<div class="span-8 endorsement">
+			<a href="{path='clients'}/{url_title}">{client_excerpt}</a>
+		</div>
+	{/exp:channel:entries}
+</div>
+{if:else}
+{exp:channel:entries channel="clients"}
+<div id="overlay">&nbsp;</div>
+<div id="two-last-cols" class="span-16 last body-copy gray big-endorsement" style="display:none;">
+	<div id="close-button" class="span-1 prepend-15 top-pad-20 pull-quarter"><a href="{path='clients'}">&times;</a></div>
+	<div class="span-10 prepend-1">
+		{client_body}
+	</div>
+</div><!-- end #two-last-cols -->
+{/exp:channel:entries}
+<div id="prev-next" class="span-2 prepend-14 last" style="display:none;">
+	<div style="padding-left:20px;">
+		{exp:channel:prev_entry channel="clients"}
+	   <a rel="prev" href="{path='clients'}">&lt;</a>
+		{/exp:channel:prev_entry}
+		{exp:channel:next_entry channel="clients"}
+	   <a rel="next" href="{path='clients'}">&gt;</a>
+		{/exp:channel:next_entry}
+	</div>
+</div>
+{/if}
+
+{embed="includes/footer"}
